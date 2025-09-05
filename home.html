@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="manifest" href="/manifest-prof.json">
+<link rel="apple-touch-icon" href="/img/pwa-192.png">
+<meta name="theme-color" content="#164290">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Home — Manutenção SENAI</title>
+  <link rel="stylesheet" href="styles/home.css"/>
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="SENAI"/>
+  </header>
+
+  <main class="container home">
+    <section class="box">
+      <div class="actions">
+        <div style="flex:1">
+     <label for="setor" class="form-label">Setor</label>
+<select id="setor" class="form-control">
+  <option value="">Escolha o setor</option>
+  <option value="Metalurgia">Metalurgia</option>
+  <option value="Mecatrônica">Mecatrônica</option>
+  <option value="Construção civil">Construção civil</option>
+  <option value="Plástico">Plástico</option>
+  <option value="Automotivo">Automotivo</option>
+  <option value="Outro (área externa)">Outro (área externa)</option>
+</select>
+        </div>
+       <a href="index.html"><button id="btnSair" class="btn btn-ghost">Sair</button></a>
+      </div>
+
+      <label for="sala">Sala / Local</label>
+      <input type="text" id="sala" placeholder="Ex.: Sala 12, Laboratório 3, Bloco B"/>
+
+      <label for="descricao">Descrição do problema</label>
+      <textarea id="descricao" placeholder="Explique o problema com detalhes"></textarea>
+
+      <label for="gravidade">Gravidade</label>
+      <select id="gravidade">
+        <option value="">Selecione</option>
+        <option>Baixa</option>
+        <option>Média</option>
+        <option>Alta</option>
+        <option>Crítica</option>
+      </select>
+
+ <label for="foto">Foto (opcional)</label>
+
+<!-- PREVIEW ÚNICO (com botão) -->
+<div id="preview" class="preview" style="display:none;">
+  <img alt="Pré-visualização" />
+  <div style="margin-top:8px;">
+    <button id="btnRemoverFoto" type="button" class="btn btn-secondary">
+      Remover foto
+    </button>
+  </div>
+</div>
+
+<div class="d-flex gap-2">
+  <input type="file" id="foto" accept="image/*" capture="environment">
+  <button type="button" id="abrirCamera" class="btn btn-outline-secondary">Tirar foto</button>
+</div>
+
+<!-- Overlay da câmera (somente um bloco também) -->
+<div id="camOverlay" class="cam-overlay" hidden>
+  <div class="cam-box">
+    <video id="camVideo" autoplay playsinline></video>
+    <div class="cam-actions">
+      <button id="btnCapturar" class="btn btn-primary">Capturar</button>
+      <button id="btnUsar" class="btn btn-success" disabled>Usar foto</button>
+      <button id="btnFechar" class="btn btn-secondary">Fechar</button>
+    </div>
+    <canvas id="camCanvas" class="d-none"></canvas>
+  </div>
+</div>
+
+<!-- Preview da foto -->
+<div id="preview" class="preview" style="display:none;">
+  <img alt="Pré-visualização" />
+  <div style="margin-top:8px;">
+    <button id="btnRemoverFoto" type="button" class="btn btn-secondary">
+      Remover foto
+    </button>
+  </div>
+</div>
+
+      <div class="mt-4">
+        <button id="btnSalvar" class="btn btn-primary" type="button">Registrar chamado</button>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <h2>Meus chamados</h2>
+      <div id="lista" class="tickets mt-3"></div>
+    </section>
+  </main>
+  
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register('/sw-prof.js', { scope: '/' })
+        .then(() => console.log('SW (prof) registrado'))
+        .catch(console.error);
+    });
+  }
+</script>
+  <script type="module" src="js/home.js"></script>
+</body>
+</html>

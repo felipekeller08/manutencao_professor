@@ -1,0 +1,213 @@
+/* ===== Base / Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a { text-decoration: none; }
+
+/* ===== Corpo ===== */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* usar min-height para evitar cortes em mobile */
+  min-height: 100vh;
+  min-height: 100svh; /* iOS/Android */
+  background-color: #fff;
+  padding: clamp(12px, 3vw, 24px); /* respiro nas bordas em telas pequenas */
+}
+
+/* ===== Container ===== */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;          /* limita largura máxima em telas grandes */
+  margin: 0 auto;             /* centraliza horizontalmente */
+  padding: clamp(12px, 4vw, 48px);
+  gap: clamp(12px, 3vw, 24px);
+  flex-wrap: wrap;            /* permite quebrar em telas pequenas */
+}
+
+/* ===== Card ===== */
+.card {
+  background: #fff;
+  padding: clamp(20px, 4vw, 30px);
+  border-radius: 15px;
+  box-shadow: 1px 5px 5px 5px rgb(214, 214, 214);
+  width: min(100%, 500px);    /* nunca passa da tela */
+  height: auto;
+  text-align: center;
+  margin: clamp(10px, 2vw, 15px);
+}
+
+/* ===== Imagens ===== */
+img {
+  max-width: 100%;            /* ajusta ao card automaticamente */
+  height: auto;
+}
+
+/* ===== Labels ===== */
+.label1 label,
+.label2 label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #413f3f;
+  display: flex;
+  margin-top: clamp(16px, 5vw, 50px); /* Responsivo */
+  margin-bottom: 6px;                  /* remove negativo p/ mobile */
+}
+
+/* ===== Inputs ===== */
+.label1 input,
+.label2 input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #c0bfbf;
+  outline: none;
+  transition: 0.3s;
+}
+
+/* ===== Agrupadores ===== */
+.juntos { margin-top: 5px; }
+
+.conectado {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap; /* quebra em telas menores */
+}
+
+.conectado label { font-size: 13px; }
+
+/* ===== Links auxiliares ===== */
+.cadastro a {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-top: -12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.cadastro a p:hover {
+  text-decoration: underline;
+  color: #e8490f;
+}
+
+/* ===== Botões ===== */
+.cadastro button,
+#entrar, #logon, #cadastrar {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#entrar, #logon {
+  background: #e8490f;
+  color: #fff;
+}
+
+#entrar:hover,
+#logon:hover { background: #fc9700; }
+
+#redefinir:hover {
+  background: #5e5f5e;
+  color: white;
+}
+
+#cadastrar {
+  background-color: #164290;
+  color: #fff;
+}
+#cadastrar:hover { background-color: #015cd3; }
+
+/* ===== Textos ===== */
+.card p {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+}
+.duvida { margin-top: 20px; }
+
+/* ===== Botão voltar ===== */
+.voltar {
+  background-color: #164290;
+  color: #fff;
+}
+.voltar:hover {
+  background-color: #015cd3;
+  text-decoration: none;
+}
+
+/* ====== MEDIA QUERIES ====== */
+
+/* Tablets e abaixo */
+@media (max-width: 992px) {
+  .container {
+    padding: clamp(12px, 4vw, 24px);
+  }
+  .card {
+    border-radius: 14px;
+  }
+}
+
+/* Mobile grande (até ~768px) */
+@media (max-width: 768px) {
+  body {
+    align-items: flex-start;           /* evita “pular” por causa do teclado */
+  }
+  .container {
+    min-height: 100svh;
+    padding: 16px;
+  }
+  .card {
+    width: 100%;
+    margin: 12px 0;
+    padding: 20px;
+    border-radius: 12px;
+  }
+  .label1 label,
+  .label2 label {
+    margin-top: 18px;                  /* menos espaço entre campos */
+  }
+  .cadastro a {
+    justify-content: flex-start;       /* alinha melhor em telas pequenas */
+    margin-top: 6px;
+  }
+}
+
+/* Mobile pequeno (até ~480px) */
+@media (max-width: 480px) {
+  .card {
+    padding: 18px;
+  }
+  .cadastro button,
+  #entrar, #logon, #cadastrar {
+    font-size: 15px;
+    padding: 12px;
+  }
+  .card p { font-size: 13px; }
+  .conectado { justify-content: space-between; }
+}
+
+/* Muito pequeno (até ~360px) */
+@media (max-width: 360px) {
+  .card { padding: 16px; }
+  .label1 label, .label2 label { font-size: 13px; }
+  .cadastro button,
+  #entrar, #logon, #cadastrar { font-size: 14px; }
+}

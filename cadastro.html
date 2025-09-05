@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="manifest" href="/manifest-prof.json">
+    <link rel="apple-touch-icon" href="/img/pwa-192.png">
+    <meta name="theme-color" content="#164290">
+    <title>Manutenção-SENAI</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            
+            <img src="img/logo.png" alt="">
+            
+            
+            <div class="cadastro">
+                <div class="label1">
+            <label for="email" id="usuario">Seu e-mail</label><br>
+            <input type="text" id="email" placeholder="ex: professor@senai.br"> <br>
+            </div>
+            <div class="label2">
+            <label for="email" id="login">Sua senha</label><br>
+            <input type="password" id="senha" placeholder="ex: 123456"><br>
+            </div>
+            <div class="conectado">           
+            </div>
+            <button id="logon">CADASTRAR</button> 
+            <a href="index.html"><button class="voltar" style="margin-top: 40px;">Voltar</button></a>   
+        </div>
+    </div>
+    <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register('/sw-prof.js', { scope: '/' })
+        .then(() => console.log('SW (prof) registrado'))
+        .catch(console.error);
+    });
+  }
+</script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script type="module" src="js/auth.js"></script>
+</body>
+</html>
